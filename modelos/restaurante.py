@@ -1,9 +1,12 @@
+from modelos.avaliacao import Avaliacao
+
 class Restaurante:
     restaurantes = []
     def __init__(self, nome, categoria): # Método construtor que inicializa os atributos da class
         self._nome = nome.title()
         self.categoria = categoria.upper()
         self._ativo = False
+        self._avaliacao = []
         Restaurante.restaurantes.append(self) # Adicionando o restaurante à lista de restaurantes
 
     def __str__(self): # Método que retorna uma string
@@ -21,3 +24,5 @@ class Restaurante:
     
     def alterar_status(self): # Método que altera o status do restaurante (ativo/inativo)
         self._ativo = not self._ativo
+
+    
