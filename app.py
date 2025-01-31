@@ -1,8 +1,9 @@
 from modelos.restaurante import Restaurante
 
 restaurante_praca = Restaurante('praça', 'Gourmet')
-restaurante_mexicano = Restaurante('mexican Food', 'Mexicana')
-restaurante_japones = Restaurante('Japa', 'Japonesa')
+restaurante_praca.receber_avaliacao('Everton', 5)
+restaurante_praca.receber_avaliacao('Maria', 6)
+restaurante_praca.receber_avaliacao('José', 8)
 
 restaurante_praca.alterar_status()
 
