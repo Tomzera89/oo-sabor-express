@@ -1,4 +1,5 @@
 from modelos.avaliacao import Avaliacao
+from modelos.cardapio.item_cardapio import Cardapio
 
 class Restaurante:
     restaurantes = []
@@ -7,6 +8,7 @@ class Restaurante:
         self.categoria = categoria.upper()
         self._ativo = False
         self._avaliacao = []
+        self._cardapio = []
         Restaurante.restaurantes.append(self) # Adicionando o restaurante à lista de restaurantes
 
     def __str__(self): # Método que retorna uma string
@@ -40,3 +42,18 @@ class Restaurante:
         media_notas = round(total_notas / quanditade_avaliacoes, 1)
         return media_notas
     
+
+    def adc_cardapio(self, item):
+        if isinstance(item, Cardapio): # Verifica se o item passado como argumento é uma instancia da class Cardapio ou derivada dela
+            self._cardapio.append(item)
+
+    @property
+    def exibe_cardapio(self):
+        print(f'Cardápio do restaurante {self._nome}\n')
+        for i,item in enumerate(self._cardapio, start=1): # Enumera os itens do cardápio com o número e nome do item
+            if hasattr(item, '_descricao'): # Verifica se o item possui a descrição
+                mensagem_prato = f'{i}. {item._nome} - R$ {item._preco:<10} | Descrição: {item._descricao}'
+                print(mensagem_prato)
+            else:
+                mensagem_bebida = f'{i}. {item._nome} - R$ {item._preco:<10} | Tamanho: {item._tamanho}'
+                print(mensagem_bebida)
