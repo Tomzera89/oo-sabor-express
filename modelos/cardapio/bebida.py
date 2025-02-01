@@ -1,5 +1,9 @@
-class Bebida:
+from modelos.cardapio.item_cardapio import Cardapio
+
+class Bebida(Cardapio):
     def __init__(self, nome, preco, tamanho):
-        self._nome = nome.title()
-        self._preco = preco
-        self._tamanho = tamanho.upper()
+        super().__init__(nome, preco)
+        self._tamanho = tamanho
+
+    def __str__(self):
+        return self._nome
