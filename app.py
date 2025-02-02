@@ -27,7 +27,7 @@ else:
     print(f'Erro ao acessar a API: {response.status_code} - {response.reason}!')
 
 
-for nome_restaurante, item in dados_restaurante.items():
+for nome_restaurante, dados in dados_restaurante.items(): # Salvando os dados em JSON separados por restaurante
     nome_do_arquivo = f'{nome_restaurante}.json'
     with open(nome_do_arquivo, 'w') as arquivo_restaurante:
-        json.dump(item, dados_restaurante, indent=4)
+        json.dump(dados, arquivo_restaurante, indent=4)
